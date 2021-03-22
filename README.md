@@ -9,7 +9,7 @@
 - [Cài đặt](#cài-đặt)
 
 ## Thông tin chung
-Dự án là bài tập lớn của môn Ứng dụng di động cho điện toán đám mây (INT3122 20), Đại học Công Nghệ (UET) - Đại học Quốc gia Hà Nội (VNU), kì II năm học 2020 - 2021.
+Dự án là bài tập lớn của môn Ứng dụng di động cho điện toán đám mây (INT3122 20), Đại học Công Nghệ (UET) - Đại học Quốc gia Hà Nội (VNU), học kì II, năm học 2020 - 2021.
 
 Nhóm 99:
 - Phạm Đắc Ngọc Nhật (17021312)
