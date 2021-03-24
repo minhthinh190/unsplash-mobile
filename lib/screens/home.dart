@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
       body: const Center(
         child: const Text('Home Screen'),
       ),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: BottomBar(selectedIndex: 0),
     );
   }
 }
