@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-class BottomBar extends StatefulWidget {
-  @override 
-  _BottomBarState createState() => _BottomBarState();
-}
+class BottomBar extends StatelessWidget {
+  final int selectedIndex;
 
-class _BottomBarState extends State<BottomBar> {
+  BottomBar({Key key, @required this.selectedIndex}) : super(key: key);
+
   @override 
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -31,7 +30,7 @@ class _BottomBarState extends State<BottomBar> {
           backgroundColor: Colors.blue,
         ),
       ],
-      currentIndex: 0,
+      currentIndex: selectedIndex,
     );
   }
 }
