@@ -6,10 +6,10 @@ class Photo {
   
   Photo({@required this.id, @required this.url});
 
-  factory Photo.fromJson(Map<String, dynamic> json) {
+  factory Photo.fromMap(Map<String, dynamic> json) {
     return Photo(
       id: json['id'],
-      url: json['urls']['small'],
+      url: json['urls']['small']
     );
   }
 }
