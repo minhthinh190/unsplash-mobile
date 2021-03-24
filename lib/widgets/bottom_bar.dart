@@ -45,6 +45,9 @@ class BottomBar extends StatelessWidget {
     }
 
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: Colors.black,
+      unselectedItemColor: Colors.grey,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.photo_library_rounded),
