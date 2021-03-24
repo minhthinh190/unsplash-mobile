@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:unsplash_mobile/screens/home.dart';
+import 'package:unsplash_mobile/screens/search.dart';
+import 'package:unsplash_mobile/screens/my_profile.dart';
 
 class BottomBar extends StatelessWidget {
   final int selectedIndex;
@@ -7,6 +10,32 @@ class BottomBar extends StatelessWidget {
 
   @override 
   Widget build(BuildContext context) {
+    void _onItemTapped(int index) {
+      switch(index) {
+        case 0:
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Home()),
+          );
+          break;
+        case 1:
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Search()),
+          );
+          break;
+        case 3:
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyProfile()),
+          );
+          break;
+      }
+    }
+
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -31,6 +60,7 @@ class BottomBar extends StatelessWidget {
         ),
       ],
       currentIndex: selectedIndex,
+      onTap: _onItemTapped,
     );
   }
 }
