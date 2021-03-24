@@ -7,7 +7,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(),
       body: const Center(
-        child: const Text('Welcome to Unsplash!'),
+        child: const Text('Home Screen'),
       ),
     );
   }
