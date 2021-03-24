@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unsplash_mobile/widgets/appbar.dart';
+import 'package:unsplash_mobile/widgets/bottom_bar.dart';
 
 class MyProfile extends StatelessWidget {
   @override 
@@ -9,6 +10,7 @@ class MyProfile extends StatelessWidget {
       body: const Center(
         child: const Text('My Profile Screen'),
       ),
+      bottomNavigationBar: BottomBar(selectedIndex: 3),
     );
   }
 }
