@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unsplash_mobile/screens/home.dart';
 import 'package:unsplash_mobile/screens/search.dart';
+import 'package:unsplash_mobile/screens/upload.dart';
 import 'package:unsplash_mobile/screens/my_profile.dart';
 
 class BottomBar extends StatelessWidget {
@@ -24,6 +25,13 @@ class BottomBar extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Search()),
+          );
+          break;
+        case 2:
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Upload()),
           );
           break;
         case 3:
