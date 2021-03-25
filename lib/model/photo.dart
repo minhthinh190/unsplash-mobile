@@ -1,15 +1,42 @@
-import 'package:flutter/cupertino.dart';
-
 class Photo {
-  final String id;
-  final String url;
-  
-  Photo({@required this.id, @required this.url});
+  String photographer;
+  String photographer_url;
+  int photographer_id;
+  Src src;
 
-  factory Photo.fromMap(Map<String, dynamic> json) {
+  Photo({
+    this.src,
+    this.photographer_url,
+    this.photographer_id,
+    this.photographer,
+  });
+
+  factory Photo.fromMap(Map<String, dynamic> jsonData) {
     return Photo(
-      id: json['id'],
-      url: json['urls']['small']
+      src: Src.fromMap(jsonData["src"]),
+      photographer_url: jsonData["photographer_url"],
+      photographer_id: jsonData["photographer_id"],
+      photographer: jsonData["photographer"],
+    );
+  }
+}
+
+class Src {
+  String original;
+  String small;
+  String portrait;
+
+  Src({
+    this.portrait,
+    this.original,
+    this.small,
+  });
+
+  factory Src.fromMap(Map<String, dynamic> jsonData) {
+    return Src(
+      portrait: jsonData["portrait"],
+      original: jsonData["original"],
+      small: jsonData["small"],
     );
   }
 }
