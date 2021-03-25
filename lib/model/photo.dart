@@ -1,7 +1,7 @@
 class Photo {
-  String photographer;
-  String photographer_url;
-  int photographer_id;
+  final String photographer;
+  final String photographer_url;
+  final int photographer_id;
   Src src;
 
   Photo({
