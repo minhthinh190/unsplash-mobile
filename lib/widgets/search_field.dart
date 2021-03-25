@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget searchField() {
+Widget searchField({TextEditingController controller}) {
   return Container(
     decoration: BoxDecoration(
       color: Color(0xffeceff1),
@@ -14,6 +14,7 @@ Widget searchField() {
       children: <Widget>[
         Expanded(
           child: TextField(
+            controller: controller,
             decoration: InputDecoration(
               hintText: 'Search',
               border: InputBorder.none,
