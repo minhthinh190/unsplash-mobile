@@ -1,32 +1,43 @@
 import 'package:flutter/material.dart';
 
-Widget searchField({TextEditingController controller}) {
-  return Container(
-    decoration: BoxDecoration(
-      color: Color(0xffeceff1),
-      borderRadius: BorderRadius.circular(30),
-    ),
-    
-    padding: EdgeInsets.symmetric(horizontal: 24),
-    margin: EdgeInsets.only(top: 20, right: 30, left: 30, bottom: 10),
+class SearchField extends StatelessWidget {
+  final TextEditingController controller;
+  final void Function(String) callback;
 
-    child: Row(
-      children: <Widget>[
-        Expanded(
-          child: TextField(
-            controller: controller,
-            decoration: InputDecoration(
-              hintText: 'Search',
-              border: InputBorder.none,
+  SearchField({Key key, @required this.controller, @required this.callback}) : super(key: key);
+
+  @override 
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0xffeceff1),
+        borderRadius: BorderRadius.circular(30),
+      ),
+    
+      padding: EdgeInsets.symmetric(horizontal: 24),
+      margin: EdgeInsets.only(top: 20, right: 30, left: 30, bottom: 10),
+
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: TextField(
+              controller: this.controller,
+              decoration: InputDecoration(
+                hintText: 'Search',
+                border: InputBorder.none,
+              ),
             ),
           ),
-        ),
-        GestureDetector(
-          child: Container(
-            child: Icon(Icons.search_rounded),
+          GestureDetector(
+            onTap: () {
+              this.callback(this.controller.text);
+            },
+            child: Container(
+              child: Icon(Icons.search_rounded),
+            ),
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }
