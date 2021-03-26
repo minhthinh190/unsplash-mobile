@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   
   getNewPhotos() async {
     final response = await http.get(
-      newPhotos,
+      "https://api.pexels.com/v1/curated?per_page=16",
       headers: {"Authorization": apiKey},
     );
 
