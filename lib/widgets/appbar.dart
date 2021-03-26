@@ -5,7 +5,11 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      title: const Text('Unsplash'),
+      //title: const Text('Unsplash'),
+      title: Image.asset(
+        'assets/images/unsplash_logo.png', 
+        height: 30,
+      ),
     );
   }
 
