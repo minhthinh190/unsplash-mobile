@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<Photo> photos = new List();
-
+  
   getNewPhotos() async {
     final response = await http.get(
       newPhotos,
