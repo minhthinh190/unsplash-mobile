@@ -17,7 +17,7 @@ Widget photoList({List<Photo> photos, context}) {
       children: photos.map((photo) {
         return GridTile(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(30),
             child: Image.network(photo.src.portrait, fit: BoxFit.cover,),
           ),
         );
