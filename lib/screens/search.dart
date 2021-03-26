@@ -23,22 +23,6 @@ class _SearchState extends State<Search> {
 
   TextEditingController searchController = new TextEditingController();
 
-  getNewPhotos() async {
-    final response = await http.get(
-      newPhotos,
-      headers: {"Authorization": apiKey},
-    );
-
-    Map<String, dynamic> jsonData = jsonDecode(response.body);
-    jsonData["photos"].forEach((element) {
-      Photo photo = new Photo();
-      photo = Photo.fromMap(element);
-      photos.add(photo);
-    });
-
-    setState(() {});
-  }
-
   getSearchedPhotos(String query) async {
     final response = await http.get(
       "https://api.pexels.com/v1/search?query=$query&per_page=16",
