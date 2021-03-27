@@ -3,8 +3,7 @@ import 'package:unsplash_mobile/model/photo.dart';
 
 Widget photoList({List<Photo> photos, context}) {
   return Container(
-    margin: EdgeInsets.only(top: 20, right: 0, left: 0, bottom: 20),
-    padding: EdgeInsets.symmetric(horizontal: 30),
+    padding: EdgeInsets.only(top: 20, right: 30, left: 30, bottom: 20),
 
     child: GridView.count(
       shrinkWrap: true,
