@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class SearchField extends StatelessWidget {
   final TextEditingController controller;
@@ -33,7 +34,10 @@ class SearchField extends StatelessWidget {
               this.callback(this.controller.text);
             },
             child: Container(
-              child: Icon(Icons.search_rounded),
+              child: Transform.rotate(
+                angle: 90 * math.pi / 180,
+                child: Icon(Icons.search_rounded),
+              ),
             ),
           ),
         ],
