@@ -38,7 +38,7 @@ class CategoriesTile extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
-            color: Color(0xff323232),
+            color: Color(0xff808080),
           ),
         ),
       ),
