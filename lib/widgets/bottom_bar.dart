@@ -46,6 +46,8 @@ class BottomBar extends StatelessWidget {
 
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
+      elevation: 0,
+      backgroundColor: Colors.white,
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.grey,
       showSelectedLabels: false,
@@ -55,22 +57,18 @@ class BottomBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.photo_library_rounded),
           label: 'Home',
-          backgroundColor: Colors.blue,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.search_rounded),
           label: 'Search',
-          backgroundColor: Colors.blue,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.upload_sharp),
           label: 'Upload',
-          backgroundColor: Colors.blue,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person_rounded),
           label: 'Profile',
-          backgroundColor: Colors.blue,
         ),
       ],
       currentIndex: selectedIndex,
