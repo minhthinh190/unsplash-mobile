@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget categoryList({List<String> items, context}) {
+Widget categoryList({List<String> items, Function(String) callback, context}) {
   return Container(
     margin: EdgeInsets.symmetric(vertical: 10),
     padding: EdgeInsets.symmetric(horizontal: 30),
@@ -10,7 +10,7 @@ Widget categoryList({List<String> items, context}) {
       itemCount: items.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return CategoriesTile(title: items[index]);
+        return CategoriesTile(title: items[index], callback: callback);
       },
     ),
   );
@@ -18,11 +18,17 @@ Widget categoryList({List<String> items, context}) {
 
 class CategoriesTile extends StatelessWidget {
   final String title;
-  CategoriesTile({@required this.title});
+  final Function(String) callback;
+
+  CategoriesTile({@required this.title, @required this.callback});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        this.callback(this.title);
+      },
+
       child: Container(
         margin: EdgeInsets.only(right: 30),
         alignment: Alignment.center,
