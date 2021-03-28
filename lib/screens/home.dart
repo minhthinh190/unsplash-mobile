@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
         child: Container(
           child: Column(
             children: <Widget>[
-              categoryList(items: items, callback: getSearchedPhotos),
+              CategoryList(items: items, callback: getSearchedPhotos),
               photoList(photos: photos, context: context),
             ],
           ),
