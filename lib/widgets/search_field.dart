@@ -15,8 +15,9 @@ class SearchField extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
       ),
 
+      height: 54,
       padding: EdgeInsets.symmetric(horizontal: 24),
-      margin: EdgeInsets.only(top: 20, right: 30, left: 30, bottom: 20),
+      margin: EdgeInsets.only(top: 20, right: 30, left: 30, bottom: 10),
 
       child: Row(
         children: <Widget>[
@@ -25,6 +26,7 @@ class SearchField extends StatelessWidget {
               controller: this.controller,
               decoration: InputDecoration(
                 hintText: 'Search',
+                hintStyle: TextStyle(fontWeight: FontWeight.bold),
                 border: InputBorder.none,
               ),
             ),
@@ -35,8 +37,8 @@ class SearchField extends StatelessWidget {
             },
             child: Container(
               child: Transform.rotate(
-                angle: 90 * math.pi / 180,
-                child: Icon(Icons.search_rounded),
+                angle: 80 * math.pi / 180,
+                child: Icon(Icons.search_rounded, color: Color(0xff808080)),
               ),
             ),
           ),
