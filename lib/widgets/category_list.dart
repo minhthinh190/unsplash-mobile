@@ -15,8 +15,7 @@ class _CategoryListState extends State<CategoryList> {
   @override 
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 15),
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      margin: EdgeInsets.only(top: 15, bottom: 15),
       height: 33,
 
       child: ListView.builder(
@@ -70,7 +69,7 @@ class _CategoriesTileState extends State<CategoriesTile> {
       
       child: widget.isSelected ? 
       Container(
-        margin: EdgeInsets.only(right: 30),
+        margin: EdgeInsets.only(left: 30),
         alignment: Alignment.center,
         
         decoration: BoxDecoration(
@@ -90,7 +89,7 @@ class _CategoriesTileState extends State<CategoriesTile> {
       ) 
       :
       Container(
-        margin: EdgeInsets.only(right: 30),
+        margin: EdgeInsets.only(left: 30),
         alignment: Alignment.center,
 
         child: Text(
