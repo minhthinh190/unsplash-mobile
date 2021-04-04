@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unsplash_mobile/model/photo.dart';
 
-Widget trendingList({List<Photo> photos, context}) {
+Widget trendingImages({List<Photo> photos, context}) {
   return Container(
     height: 130,
     margin: EdgeInsets.only(top: 20),
