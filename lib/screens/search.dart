@@ -5,9 +5,9 @@ import 'package:http/http.dart' as http;
 
 import 'package:unsplash_mobile/widgets/appbar.dart';
 import 'package:unsplash_mobile/widgets/bottom_bar.dart';
-import 'package:unsplash_mobile/widgets/search_field.dart';
-import 'package:unsplash_mobile/widgets/trending_list.dart';
-import 'package:unsplash_mobile/widgets/recommended_list.dart';
+import 'package:unsplash_mobile/widgets/search/search_field.dart';
+import 'package:unsplash_mobile/widgets/search/trending_list.dart';
+import 'package:unsplash_mobile/widgets/search/recommended_list.dart';
 
 import 'package:unsplash_mobile/data/api.dart';
 import 'package:unsplash_mobile/model/photo.dart';
