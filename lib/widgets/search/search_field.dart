@@ -26,7 +26,7 @@ class SearchField extends StatelessWidget {
               controller: this.controller,
               decoration: InputDecoration(
                 hintText: 'Search',
-                hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                hintStyle: TextStyle(fontWeight: FontWeight.bold, color: Color(0xffbababa)),
                 border: InputBorder.none,
               ),
             ),
