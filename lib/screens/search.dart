@@ -85,7 +85,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             SearchField(controller: searchController, callback: getSearchedPhotos),
@@ -117,7 +117,7 @@ class _SearchState extends State<Search> {
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     )
                   ),
-                  trendingTopics(items: ['People', 'Architecture', 'Space', 'Current Events'], callback: getSearchedPhotos),
+                  trendingTopics(items: ['Interiors', 'Architecture', 'Space', 'Current Events'], callback: getSearchedPhotos),
                 ],
               ),
             ),
