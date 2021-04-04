@@ -7,6 +7,7 @@ Widget trendingTopics({List<String> items, Function(String) callback, context}) 
     child: Column(
       children: <Widget>[
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             topicBox(title: items[0], callback: callback),
             topicBox(title: items[1], callback: callback),
@@ -14,6 +15,7 @@ Widget trendingTopics({List<String> items, Function(String) callback, context}) 
         ),
         SizedBox(height: 15),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             topicBox(title: items[2], callback: callback),
             topicBox(title: items[3], callback: callback),
@@ -31,7 +33,6 @@ Widget topicBox({String title, Function(String) callback, context}) {
     },
     
     child: Container(
-      margin: EdgeInsets.only(right: 20),
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 13),
       alignment: Alignment.center,
 
