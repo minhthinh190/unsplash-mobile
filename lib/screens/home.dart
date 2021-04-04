@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:unsplash_mobile/widgets/appbar.dart';
 import 'package:unsplash_mobile/widgets/bottom_bar.dart';
-import 'package:unsplash_mobile/widgets/topic_list.dart';
+import 'package:unsplash_mobile/widgets/home/topic_list.dart';
 
 import 'package:unsplash_mobile/data/api.dart';
 import 'package:unsplash_mobile/model/photo.dart';
