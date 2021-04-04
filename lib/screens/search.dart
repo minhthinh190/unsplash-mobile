@@ -6,8 +6,9 @@ import 'package:http/http.dart' as http;
 import 'package:unsplash_mobile/widgets/appbar.dart';
 import 'package:unsplash_mobile/widgets/bottom_bar.dart';
 import 'package:unsplash_mobile/widgets/search/search_field.dart';
-import 'package:unsplash_mobile/widgets/search/trending_list.dart';
-import 'package:unsplash_mobile/widgets/search/recommended_list.dart';
+import 'package:unsplash_mobile/widgets/search/trending_images.dart';
+import 'package:unsplash_mobile/widgets/search/trending_topics.dart';
+import 'package:unsplash_mobile/widgets/search/recommended_images.dart';
 
 import 'package:unsplash_mobile/data/api.dart';
 import 'package:unsplash_mobile/model/photo.dart';
@@ -100,7 +101,7 @@ class _SearchState extends State<Search> {
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     )
                   ),
-                  trendingList(photos: trendingPhotos),
+                  trendingImages(photos: trendingPhotos),
                 ],
               ),
             ),
@@ -116,7 +117,7 @@ class _SearchState extends State<Search> {
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     )
                   ),
-                  categoryList(items: ['People', 'Architecture', 'Space', 'Current Events'], callback: getSearchedPhotos),
+                  trendingTopics(items: ['People', 'Architecture', 'Space', 'Current Events'], callback: getSearchedPhotos),
                 ],
               ),
             ),
@@ -132,7 +133,7 @@ class _SearchState extends State<Search> {
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     )
                   ),
-                  RecommendedList(),
+                  RecommendedImages(),
                 ],
               ),
             ),
@@ -142,51 +143,4 @@ class _SearchState extends State<Search> {
       bottomNavigationBar: BottomBar(selectedIndex: 1),
     );
   }
-}
-
-Widget categoryList({List<String> items, Function(String) callback, context}) {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-
-    child: Column(
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            trendingTopic(title: items[0], callback: callback),
-            trendingTopic(title: items[1], callback: callback),
-          ],
-        ),
-        SizedBox(height: 15),
-        Row(
-          children: <Widget>[
-            trendingTopic(title: items[2], callback: callback),
-            trendingTopic(title: items[3], callback: callback),
-          ],
-        ),
-      ],
-    )
-  );
-}
-
-Widget trendingTopic({String title, Function(String) callback, context}) {
-  return GestureDetector(
-    onTap: () {
-      callback(title);
-    },
-    
-    child: Container(
-      margin: EdgeInsets.only(right: 20),
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 13),
-      alignment: Alignment.center,
-
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50),
-        color: Color(0xffececec),
-      ),
-      child: Text(
-        title,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xff808080)),
-      ),
-    )
-  );
 }
