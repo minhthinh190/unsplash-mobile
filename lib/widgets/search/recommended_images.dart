@@ -43,7 +43,7 @@ class _RecommendedImagesState extends State<RecommendedImages> {
       margin: EdgeInsets.only(top: 20),
       padding: EdgeInsets.symmetric(horizontal: 30),
       
-      child: Row(
+      child: photos.length != 0 ? Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
         children: <Widget>[
@@ -75,6 +75,12 @@ class _RecommendedImagesState extends State<RecommendedImages> {
               child: Image.network(photos[3].src.portrait, fit: BoxFit.cover),
             ),
           ),
+        ],
+      )
+      :
+      Row(
+        children: <Widget>[
+          Text(''),
         ],
       ),
     );
