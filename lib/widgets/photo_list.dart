@@ -9,7 +9,7 @@ Widget photoList({List<Photo> photos, context}) {
       shrinkWrap: true,
       crossAxisCount: 2,
       physics: ClampingScrollPhysics(),
-      childAspectRatio: 0.9,
+      childAspectRatio: 1,
       mainAxisSpacing: 20.0,
       crossAxisSpacing: 15.0,
 
