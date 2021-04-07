@@ -23,47 +23,59 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  List<Photo> photos = new List();
-  List<Photo> trendingPhotos = new List();
+  List<UnsplashPhoto> photos = new List();
+  List<UnsplashPhoto> trendingPhotos = new List();
 
   TextEditingController searchController = new TextEditingController();
 
   getTrendingPhotos() async {
+    Map<String, String> queryParams = {
+      'page': '1',
+      'per_page': '5',
+      'order_by': 'popular',
+    };
+    String query = Uri(queryParameters: queryParams).query;
+    
     final response = await http.get(
-      "https://api.pexels.com/v1/curated?page=30&per_page=5",
-      headers: {"Authorization": apiKey},
+      unsplashPhotos + query,
+      headers: {'Authorization': unsplashApiKey},
     );
+    List<UnsplashPhoto> newPhotos = new List();
 
-    List<Photo> photos = new List();
+    List<dynamic> jsonData = jsonDecode(response.body);
+    jsonData.forEach((element) {
+      UnsplashPhoto photo = new UnsplashPhoto();
+      photo = UnsplashPhoto.fromMap(element);
+      newPhotos.add(photo);
+    }); 
 
-    Map<String, dynamic> jsonData = jsonDecode(response.body);
-    jsonData["photos"].forEach((element) {
-      Photo photo = new Photo();
-      photo = Photo.fromMap(element);
-      photos.add(photo);
-    });
-
-    setState(() { trendingPhotos = photos; });
+    setState(() { trendingPhotos = newPhotos; });
   }
 
-  getSearchedPhotos(String query) async {
-    final response = await http.get(
-      "https://api.pexels.com/v1/search?query=$query&per_page=16",
-      headers: {"Authorization": apiKey},
-    );
+  getSearchedPhotos(String input) async {
+    Map<String, String> queryParams = {
+      'page': '1',
+      'per_page': '16',
+      'query': input,
+    };
+    String query = Uri(queryParameters: queryParams).query;
 
+    final response = await http.get(
+      unsplashSearch + query,
+      headers: {'Authorization': unsplashApiKey},
+    );
     photos.clear();
-    List<Photo> newPhotos = new List();
+    List<UnsplashPhoto> newPhotos = new List();
 
     Map<String, dynamic> jsonData = jsonDecode(response.body);
-    jsonData["photos"].forEach((element) {
-      Photo photo = new Photo();
-      photo = Photo.fromMap(element);
+    jsonData['results'].forEach((element) {
+      UnsplashPhoto photo = new UnsplashPhoto();
+      photo = UnsplashPhoto.fromMap(element);
       newPhotos.add(photo);
     });
 
     setState(() { photos = newPhotos; });
-    displayResultScreen(query);
+    displayResultScreen(input);
   }
 
   displayResultScreen(String query) {
@@ -117,7 +129,7 @@ class _SearchState extends State<Search> {
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     )
                   ),
-                  trendingTopics(items: ['Interiors', 'Architecture', 'Space', 'Current Events'], callback: getSearchedPhotos),
+                  trendingTopics(items: ['Dress', 'Architecture', 'Bunny', 'Photoshop'], callback: getSearchedPhotos),
                 ],
               ),
             ),
