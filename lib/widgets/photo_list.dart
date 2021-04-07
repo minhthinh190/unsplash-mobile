@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:unsplash_mobile/model/photo.dart';
 
-Widget photoList({List<Photo> photos, context}) {
+import 'package:unsplash_mobile/screens/selected_image.dart';
+
+Widget photoList({List<UnsplashPhoto> photos, context}) {
   return Container(
     padding: EdgeInsets.only(top: 20, right: 30, left: 30, bottom: 20),
 
@@ -14,11 +16,22 @@ Widget photoList({List<Photo> photos, context}) {
       crossAxisSpacing: 15.0,
 
       children: photos.map((photo) {
-        return GridTile(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30),
-            child: Image.network(photo.src.portrait, fit: BoxFit.cover),
-          ),
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => SelectedImage(
+                author: photo.author,
+                imageSrc: photo.source.regular,
+              ))
+            );
+          },
+
+          child: GridTile(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: Image.network(photo.source.thumb, fit: BoxFit.cover),
+            ),
+          )
         );
       }).toList(),
     ),
