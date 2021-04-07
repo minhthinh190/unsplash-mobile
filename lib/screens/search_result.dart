@@ -6,7 +6,7 @@ import 'package:unsplash_mobile/widgets/photo_list.dart';
 
 class SearchResult extends StatelessWidget {
   final String query;
-  final List<Photo> photos;
+  final List<UnsplashPhoto> photos;
 
   SearchResult({@required this.query, @required this.photos});
 
