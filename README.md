@@ -11,7 +11,7 @@
 ## Thông tin chung
 Dự án là nội dung bài tập lớn thuộc học phần Ứng dụng di động cho điện toán đám mây (INT3122 20), Đại học Công Nghệ (UET) - Đại học Quốc gia Hà Nội (VNU), học kì II, năm học 2020 - 2021.
 
-Nhóm 99:
+Nhóm 10:
 - Phạm Đắc Ngọc Nhật (17021312)
 - Thiều Minh Thịnh (17021340)
 - Nguyễn Đình Nhật Minh (17021298)
