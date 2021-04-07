@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:unsplash_mobile/widgets/appbar.dart';
 import 'package:unsplash_mobile/widgets/bottom_bar.dart';
 import 'package:unsplash_mobile/widgets/home/topic_list.dart';
+import 'package:unsplash_mobile/widgets/photo_list.dart';
 
 import 'package:unsplash_mobile/data/api.dart';
 import 'package:unsplash_mobile/model/photo.dart';
-import 'package:unsplash_mobile/widgets/photo_list.dart';
 
 class Home extends StatefulWidget {
   @override 
@@ -16,37 +16,51 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<Photo> photos = new List();
+  List<UnsplashPhoto> photos = new List();
   List<String> items = ['Wallpapers', 'Nature', 'People', 'Architecture', 'Current Event', 'Fashion', 'Travel']; 
  
-  getNewPhotos() async {
+  getLatestPhotos() async {
+    Map<String, String> queryParams = {
+      'page': '1',
+      'per_page': '20',
+      'order_by': 'latest',
+    };
+    String query = Uri(queryParameters: queryParams).query;
+
     final response = await http.get(
-      "https://api.pexels.com/v1/curated?per_page=16",
-      headers: {"Authorization": apiKey},
+      unsplashPhotos + query,
+      headers: {'Authorization': unsplashApiKey},
+      
     );
 
-    Map<String, dynamic> jsonData = jsonDecode(response.body);
-    jsonData["photos"].forEach((element) {
-      Photo photo = new Photo();
-      photo = Photo.fromMap(element);
+    List<dynamic> jsonData = jsonDecode(response.body);
+    jsonData.forEach((element) {
+      UnsplashPhoto photo = new UnsplashPhoto();
+      photo = UnsplashPhoto.fromMap(element);
       photos.add(photo);
     });
 
     setState(() {});
   }
+  
+  getSearchedPhotos(String input) async {
+    Map<String, String> queryParams = {
+      'page': '1',
+      'per_page': '16',
+      'query': input,
+    };
+    String query = Uri(queryParameters: queryParams).query;
 
-  getSearchedPhotos(String query) async {
     final response = await http.get(
-      "https://api.pexels.com/v1/search?query=$query&per_page=16",
-      headers: {"Authorization": apiKey},
+      unsplashSearch + query,
+      headers: {'Authorization': unsplashApiKey},
     );
-
     photos.clear();
-    
+
     Map<String, dynamic> jsonData = jsonDecode(response.body);
-    jsonData["photos"].forEach((element) {
-      Photo photo = new Photo();
-      photo = Photo.fromMap(element);
+    jsonData['results'].forEach((element) {
+      UnsplashPhoto photo = new UnsplashPhoto();
+      photo = UnsplashPhoto.fromMap(element);
       photos.add(photo);
     });
 
@@ -56,7 +70,7 @@ class _HomeState extends State<Home> {
   @override 
   void initState() {
     super.initState();
-    getNewPhotos();
+    getLatestPhotos();
   }
 
   @override 
