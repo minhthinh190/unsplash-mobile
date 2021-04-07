@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -6,24 +7,37 @@ import 'package:http/http.dart' as http;
 import 'package:unsplash_mobile/model/photo.dart';
 import 'package:unsplash_mobile/data/api.dart';
 
+import 'package:unsplash_mobile/screens/selected_image.dart';
+
 class RecommendedImages extends StatefulWidget {
   @override 
   _RecommendedImagesState createState() => _RecommendedImagesState();
 }
 
 class _RecommendedImagesState extends State<RecommendedImages> {
-  List<Photo> photos = new List();
-  
+  List<UnsplashPhoto> photos = new List();
+
+
   getRecommendedPhotos() async {
+    final rnd = new Random();
+    String randomPage = rnd.nextInt(100 - 2).toString();
+
+    Map<String, String> queryParams = {
+      'page': randomPage,
+      'per_page': '4',
+      'order_by': 'popular',
+    };
+    String query = Uri(queryParameters: queryParams).query;
+
     final response = await http.get(
-      "https://api.pexels.com/v1/curated?page=10&per_page=4",
-      headers: {"Authorization": apiKey},
+      unsplashPhotos + query,
+      headers: {'Authorization': unsplashApiKey},
     );
 
-    Map<String, dynamic> jsonData = jsonDecode(response.body);
-    jsonData["photos"].forEach((element) {
-      Photo photo = new Photo();
-      photo = Photo.fromMap(element);
+    List<dynamic> jsonData = jsonDecode(response.body);
+    jsonData.forEach((element) {
+      UnsplashPhoto photo = new UnsplashPhoto();
+      photo = UnsplashPhoto.fromMap(element);
       photos.add(photo);
     });
 
@@ -47,33 +61,81 @@ class _RecommendedImagesState extends State<RecommendedImages> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
         children: <Widget>[
-          Container(
-            width: 80,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(photos[0].src.portrait, fit: BoxFit.cover),
-            ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => SelectedImage(
+                  author: photos[0].author,
+                  imageSrc: photos[0].source.regular,
+                ))
+              );
+            },
+            child: Container(
+              width: 80,
+              height: 80,
+
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(photos[0].source.small, fit: BoxFit.cover),
+              ),
+            )
           ),
-          Container(
-            width: 80,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(photos[1].src.portrait, fit: BoxFit.cover),
-            ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => SelectedImage(
+                  author: photos[1].author,
+                  imageSrc: photos[1].source.regular,
+                ))
+              );
+            },
+            child: Container(
+              width: 80,
+              height: 80,
+
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(photos[1].source.small, fit: BoxFit.cover),
+              ),
+            )
           ),
-          Container(
-            width: 80,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(photos[2].src.portrait, fit: BoxFit.cover),
-            ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => SelectedImage(
+                  author: photos[2].author,
+                  imageSrc: photos[2].source.regular,
+                ))
+              );
+            },
+            child: Container(
+              width: 80,
+              height: 80,
+
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(photos[2].source.small, fit: BoxFit.cover),
+              ),
+            )
           ),
-          Container(
-            width: 80,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(photos[3].src.portrait, fit: BoxFit.cover),
-            ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => SelectedImage(
+                  author: photos[3].author,
+                  imageSrc: photos[3].source.regular,
+                ))
+              );
+            },
+            child: Container(
+              width: 80,
+              height: 80,
+
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(photos[3].source.small, fit: BoxFit.cover),
+              ),
+            )
           ),
         ],
       )
