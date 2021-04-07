@@ -1,42 +1,50 @@
-class Photo {
-  final String photographer;
-  final String photographer_url;
-  final int photographer_id;
-  Src src;
+// Unsplash API 
+class UnsplashPhoto {
+  User author;
+  Urls source;
 
-  Photo({
-    this.src,
-    this.photographer_url,
-    this.photographer_id,
-    this.photographer,
-  });
+  UnsplashPhoto({this.author, this.source});
 
-  factory Photo.fromMap(Map<String, dynamic> jsonData) {
-    return Photo(
-      src: Src.fromMap(jsonData["src"]),
-      photographer_url: jsonData["photographer_url"],
-      photographer_id: jsonData["photographer_id"],
-      photographer: jsonData["photographer"],
+  factory UnsplashPhoto.fromMap(Map<String, dynamic> jsonData) {
+    return UnsplashPhoto(
+      author: User.fromMap(jsonData['user']),
+      source: Urls.fromMap(jsonData['urls']),
     );
   }
 }
 
-class Src {
-  String original;
-  String small;
-  String portrait;
+class User {
+  final String id;
+  final String name;
+  final String profileImage;
 
-  Src({
-    this.portrait,
-    this.original,
-    this.small,
-  });
+  User({this.id, this.name, this.profileImage});
 
-  factory Src.fromMap(Map<String, dynamic> jsonData) {
-    return Src(
-      portrait: jsonData["portrait"],
-      original: jsonData["original"],
-      small: jsonData["small"],
+  factory User.fromMap(Map<String, dynamic> jsonData) {
+    return User(
+      id: jsonData['id'],
+      name: jsonData['name'],
+      profileImage: jsonData['profile_image']['medium'],
+    );
+  }
+}
+
+class Urls {
+  final String raw;
+  final String full;
+  final String regular;
+  final String small;
+  final String thumb;
+
+  Urls({this.raw, this.full, this.regular, this.small, this.thumb});
+
+  factory Urls.fromMap(Map<String, dynamic> jsonData) {
+    return Urls(
+      raw: jsonData['raw'],
+      full: jsonData['full'],
+      regular: jsonData['regular'],
+      small: jsonData['small'],
+      thumb: jsonData['thumb'],
     );
   }
 }
