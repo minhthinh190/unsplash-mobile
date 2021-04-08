@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.2
+  path: ^1.7.0
+  path_provider: ^1.6.28
   firebase_core: <=1.0.2
   firebase_database: <=6.1.1
 
