@@ -1,4 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart' as pathProvider;
+
 import 'package:unsplash_mobile/model/photo.dart';
 
 class SelectedImage extends StatelessWidget {
@@ -6,6 +12,21 @@ class SelectedImage extends StatelessWidget {
   final String imageSrc;
 
   SelectedImage({@required this.author, @required this.imageSrc});
+
+  downloadImage() async {
+    final response = await http.get(imageSrc);
+
+    // get the image name
+    final imageName = path.basename(imageSrc);
+
+    // get the document directory path
+    final appDir = await pathProvider.getApplicationDocumentsDirectory();
+    final localPath = path.join(appDir.path, imageName);
+
+    // downloading
+    final imageFile = File(localPath);
+    await imageFile.writeAsBytes(response.bodyBytes);
+  }
 
   @override 
   Widget build(BuildContext context) {
@@ -44,7 +65,7 @@ class SelectedImage extends StatelessWidget {
                   )
                 ),
               ),
-              ImageInfo(author: author),
+              ImageInfo(author: author, callback: downloadImage),
             ] 
           ),
         )
@@ -55,8 +76,9 @@ class SelectedImage extends StatelessWidget {
 
 class ImageInfo extends StatelessWidget {
   final User author;
+  final dynamic Function() callback; 
 
-  ImageInfo({@required this.author});
+  ImageInfo({@required this.author, @required this.callback});
 
   @override
   Widget build(BuildContext context) {  
@@ -123,6 +145,10 @@ class ImageInfo extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
+                  onTap: () {
+                    callback();
+                  },
+
                   child: Container(
                     child: Icon(Icons.download_rounded, color: Color(0xffdcdcdc), size: 32),
                   ),
