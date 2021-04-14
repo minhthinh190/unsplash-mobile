@@ -35,9 +35,10 @@ class _SearchState extends State<Search> {
       'order_by': 'popular',
     };
     String query = Uri(queryParameters: queryParams).query;
-    
+    var url = Uri.parse(unsplashPhotos + query);
+
     final response = await http.get(
-      unsplashPhotos + query,
+      url,
       headers: {'Authorization': unsplashApiKey},
     );
     List<UnsplashPhoto> newPhotos = new List();
@@ -59,9 +60,10 @@ class _SearchState extends State<Search> {
       'query': input,
     };
     String query = Uri(queryParameters: queryParams).query;
+    var url = Uri.parse(unsplashSearch + query);
 
     final response = await http.get(
-      unsplashSearch + query,
+      url,
       headers: {'Authorization': unsplashApiKey},
     );
     photos.clear();
