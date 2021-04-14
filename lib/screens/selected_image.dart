@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart' as pathProvider;
 
 import 'package:unsplash_mobile/model/photo.dart';
 
@@ -13,20 +11,7 @@ class SelectedImage extends StatelessWidget {
 
   SelectedImage({@required this.author, @required this.imageSrc});
 
-  downloadImage() async {
-    final response = await http.get(imageSrc);
-
-    // get the image name
-    final imageName = path.basename(imageSrc);
-
-    // get the document directory path
-    final appDir = await pathProvider.getApplicationDocumentsDirectory();
-    final localPath = path.join(appDir.path, imageName);
-
-    // downloading
-    final imageFile = File(localPath);
-    await imageFile.writeAsBytes(response.bodyBytes);
-  }
+  downloadImage() async {}
 
   @override 
   Widget build(BuildContext context) {
