@@ -26,9 +26,10 @@ class _HomeState extends State<Home> {
       'order_by': 'latest',
     };
     String query = Uri(queryParameters: queryParams).query;
+    var url = Uri.parse(unsplashPhotos + query);
 
     final response = await http.get(
-      unsplashPhotos + query,
+      url,
       headers: {'Authorization': unsplashApiKey},
       
     );
@@ -50,9 +51,10 @@ class _HomeState extends State<Home> {
       'query': input,
     };
     String query = Uri(queryParameters: queryParams).query;
+    var url = Uri.parse(unsplashSearch + query);
 
     final response = await http.get(
-      unsplashSearch + query,
+      url,
       headers: {'Authorization': unsplashApiKey},
     );
     photos.clear();
@@ -76,7 +78,7 @@ class _HomeState extends State<Home> {
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: new MyAppBar(),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
