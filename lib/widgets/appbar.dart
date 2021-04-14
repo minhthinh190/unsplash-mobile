@@ -4,6 +4,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override 
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.white,
       centerTitle: true,
       title: Image.asset(
         'assets/images/unsplash_logo.png', 
