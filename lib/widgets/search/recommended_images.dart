@@ -28,9 +28,10 @@ class _RecommendedImagesState extends State<RecommendedImages> {
       'order_by': 'popular',
     };
     String query = Uri(queryParameters: queryParams).query;
+    var url = Uri.parse(unsplashPhotos + query);
 
     final response = await http.get(
-      unsplashPhotos + query,
+      url,
       headers: {'Authorization': unsplashApiKey},
     );
 
