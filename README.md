@@ -24,4 +24,9 @@ Nhóm 10:
 
 ## Mô tả ứng dụng
 
+## Kết quả kiểm thử
+<div>
+  <img src='./screenshots/test_results.png' width=244> <br/>
+</div>
+
 ## Cài đặt
