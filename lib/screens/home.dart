@@ -18,8 +18,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<UnsplashPhoto> photos = new List();
   List<String> items = ['Wallpapers', 'Nature', 'People', 'Architecture', 'Current Event', 'Fashion', 'Travel']; 
- 
-  getLatestPhotos() async {
+   
+  getLatestPhotos(http.Client client) async {
     Map<String, String> queryParams = {
       'page': '1',
       'per_page': '20',
@@ -28,19 +28,20 @@ class _HomeState extends State<Home> {
     String query = Uri(queryParameters: queryParams).query;
     var url = Uri.parse(unsplashPhotos + query);
 
-    final response = await http.get(
+    final response = await client.get(
       url,
       headers: {'Authorization': unsplashApiKey},
-      
     );
 
-    List<dynamic> jsonData = jsonDecode(response.body);
-    jsonData.forEach((element) {
-      UnsplashPhoto photo = new UnsplashPhoto();
-      photo = UnsplashPhoto.fromMap(element);
-      photos.add(photo);
-    });
-
+    if (response.body.isNotEmpty) {
+      List<dynamic> jsonData = jsonDecode(response.body);
+      
+      jsonData.forEach((element) {
+        UnsplashPhoto photo = new UnsplashPhoto();
+        photo = UnsplashPhoto.fromMap(element);
+        photos.add(photo);
+      });
+    }
     setState(() {});
   }
   
@@ -72,7 +73,7 @@ class _HomeState extends State<Home> {
   @override 
   void initState() {
     super.initState();
-    getLatestPhotos();
+    getLatestPhotos(http.Client());
   }
 
   @override 
