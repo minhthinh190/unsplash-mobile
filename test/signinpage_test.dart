@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:unsplash_mobile/screens/signin.dart';
 
 void main() {
+  // Test case 1
   testWidgets('Display sign in screen', (WidgetTester tester) async {
     final childWidget = SignInPage();
 
@@ -14,6 +15,7 @@ void main() {
     expect(find.byWidget(childWidget), findsOneWidget);
   });
   
+  // Test case 2
   testWidgets('Test displaying Welcome title', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
@@ -24,6 +26,7 @@ void main() {
     expect(find.text('Welcome,'), findsOneWidget);
   });
 
+  // Test case 3
   testWidgets('Test displaying sigin instruction', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
@@ -36,6 +39,7 @@ void main() {
     expect(find.text('Sign in to continue!'), findsOneWidget);
   });
   
+  // Test case 4
   testWidgets('description', (WidgetTester tester) async {
     await tester.pumpWidget(Form(
       child: Column(

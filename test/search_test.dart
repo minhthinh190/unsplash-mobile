@@ -9,6 +9,7 @@ import 'package:unsplash_mobile/widgets/search/trending_topics.dart';
 import 'package:unsplash_mobile/widgets/search/recommended_images.dart';
 
 void main() {
+  // Test case 1
   testWidgets('Test displaying search screen', (WidgetTester tester) async {
     final childWidget = Search();
 
@@ -18,7 +19,8 @@ void main() {
 
     expect(find.byWidget(childWidget), findsOneWidget);
   });
-
+  
+  // Test case 2
   testWidgets('Test displaying trending images widget', (WidgetTester tester) async {
     List<UnsplashPhoto> photos;
 
@@ -33,6 +35,7 @@ void main() {
     expect(find.byWidget(trendingImages()), findsOneWidget);
   });
 
+  // Test case 3
   testWidgets('Test recommended images widget', (WidgetTester tester) async {
           final recommendedImages = RecommendedImages();
 
