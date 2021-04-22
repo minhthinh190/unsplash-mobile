@@ -26,7 +26,7 @@ Nhóm 10:
 
 ## Kết quả kiểm thử
 <div>
-  <img src='./screenshots/test_results.png' width=244> <br/>
+  <img src='assets/screenshots/test_results.png' width=244> <br/>
 </div>
 
 ## Cài đặt
