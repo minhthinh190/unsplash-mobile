@@ -3,6 +3,7 @@ import 'package:unsplash_mobile/screens/home.dart';
 import 'package:unsplash_mobile/screens/search.dart';
 import 'package:unsplash_mobile/screens/upload.dart';
 import 'package:unsplash_mobile/screens/my_profile.dart';
+import 'package:unsplash_mobile/screens/profile.dart';
 
 class BottomBar extends StatelessWidget {
   final int selectedIndex;
@@ -38,7 +39,7 @@ class BottomBar extends StatelessWidget {
           Navigator.pop(context);
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyProfile()),
+            MaterialPageRoute(builder: (context) => Profile()),
           );
           break;
       }
@@ -48,8 +49,8 @@ class BottomBar extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       elevation: 0,
       backgroundColor: Colors.white,
-      selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.grey,
+      selectedItemColor: Color(0xff323232),
+      unselectedItemColor: Color(0xffbababa),
       showSelectedLabels: false,
       showUnselectedLabels: false,
 
