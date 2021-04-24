@@ -13,27 +13,55 @@ class SearchResult extends StatelessWidget {
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.only(top: 20),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.only(top: 40, bottom: 10),
 
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 30, right: 30, bottom: 10),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  width: double.infinity,
+                  
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: 0, 
+                        left: 0,
 
-                child: Text(
-                  this.query.inCaps,
-                  style: TextStyle(
-                    fontSize: 30, 
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff323232)
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+
+                          child: Container(
+                            width: 33,
+                            height: 33,
+                            child: Icon(Icons.arrow_back, color: Color(0xff323232)),
+                          ),
+                        )
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            this.query.inCaps,
+                            style: TextStyle(
+                              fontSize: 30, 
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff323232)
+                            ),
+                          ),
+                        ],
+                      )  
+                    ]
                   ),
                 ),
-              ),
-              photoList(photos: photos, context: context),
-            ],
+                SizedBox(height: 10),
+                photoList(photos: photos, context: context),
+              ],
+            ),
           ),
         ),
       ),
