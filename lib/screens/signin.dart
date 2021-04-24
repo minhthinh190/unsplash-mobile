@@ -116,7 +116,18 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
               ),
                   
               validator: (String value) {
-                if (value.isEmpty) return 'Please enter your email!';
+                // Remove white space in email
+                value.replaceAll(new RegExp(r'\s+'), '');
+
+                RegExp re = RegExp(
+                  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))',
+                );
+
+                if (value.isEmpty) {
+                  return 'Please enter your email';
+                } else if (!re.hasMatch(value)) {
+                  return 'Please enter a valid email!';
+                }
                 return null;
               },
             ),
@@ -143,7 +154,15 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
               ),
                   
               validator: (String value) {
-                if (value.isEmpty) return 'Please enter your password!';
+                RegExp re = RegExp(
+                  r'^(?=.*[a-zA-Z0-9]).{6,}',
+                );
+
+                if (value.isEmpty) {
+                  return 'Please enter your password!';
+                } else if (!re.hasMatch(value)) {
+                  return 'Password must have at least 6 characters!';
+                }
                 return null;
               },
               obscureText: true,
@@ -194,7 +213,7 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
   Future<void> _signInWithEmailAndPassword() async {
     try {
       final User user = (await _auth.signInWithEmailAndPassword(
-        email: _emailController.text,
+        email: _emailController.text.trim(),
         password: _passwordController.text,
       ))
         .user;
