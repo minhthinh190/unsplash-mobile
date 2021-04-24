@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   List<UnsplashPhoto> photos = new List();
   List<String> items = ['Wallpapers', 'Nature', 'People', 'Architecture', 'Current Event', 'Fashion', 'Travel']; 
    
-  getLatestPhotos(http.Client client) async {
+  getLatestPhotos() async {
     Map<String, String> queryParams = {
       'page': '1',
       'per_page': '20',
@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
     String query = Uri(queryParameters: queryParams).query;
     var url = Uri.parse(unsplashPhotos + query);
 
-    final response = await client.get(
+    final response = await http.get(
       url,
       headers: {'Authorization': unsplashApiKey},
     );
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
   @override 
   void initState() {
     super.initState();
-    getLatestPhotos(http.Client());
+    getLatestPhotos();
   }
 
   @override 
