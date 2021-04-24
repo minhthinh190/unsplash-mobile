@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:unsplash_mobile/screens/home.dart';
 import 'package:unsplash_mobile/screens/search.dart';
 import 'package:unsplash_mobile/screens/upload.dart';
-import 'package:unsplash_mobile/screens/my_profile.dart';
 import 'package:unsplash_mobile/screens/profile.dart';
 
 class BottomBar extends StatelessWidget {
