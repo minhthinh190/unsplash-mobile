@@ -109,34 +109,9 @@ class ImageInfo extends StatelessWidget {
             ),
             SizedBox(height: 23),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                  width: 74,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      GestureDetector(
-                        child: Container(
-                          child: Icon(Icons.favorite, color: Color(0xffdcdcdc), size: 32),
-                        ),
-                      ),
-                      GestureDetector(
-                        child: Container(
-                          child: Icon(Icons.add_circle, color: Color(0xffdcdcdc), size: 32),
-                        ),
-                      ),
-                    ]
-                  ),
-                ),
                 GestureDetector(
-                  onTap: () {
-                    callback();
-                  },
-
-                  child: Container(
-                    child: Icon(Icons.download_rounded, color: Color(0xffdcdcdc), size: 32),
-                  ),
+                  child: Icon(Icons.download_rounded, color: Color(0xffdcdcdc), size: 32,),
                 ),
               ],
             ),
