@@ -35,14 +35,16 @@ class _RecommendedImagesState extends State<RecommendedImages> {
       headers: {'Authorization': unsplashApiKey},
     );
 
-    List<dynamic> jsonData = jsonDecode(response.body);
-    jsonData.forEach((element) {
-      UnsplashPhoto photo = new UnsplashPhoto();
-      photo = UnsplashPhoto.fromMap(element);
-      photos.add(photo);
-    });
+    if (response.body.isNotEmpty) {
+      List<dynamic> jsonData = jsonDecode(response.body);
+      jsonData.forEach((element) {
+        UnsplashPhoto photo = new UnsplashPhoto();
+        photo = UnsplashPhoto.fromMap(element);
+        photos.add(photo);
+      });
 
-    setState(() {});
+      setState(() {});
+    }
   }
 
   @override 
