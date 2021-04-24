@@ -43,14 +43,16 @@ class _SearchState extends State<Search> {
     );
     List<UnsplashPhoto> newPhotos = new List();
 
-    List<dynamic> jsonData = jsonDecode(response.body);
-    jsonData.forEach((element) {
-      UnsplashPhoto photo = new UnsplashPhoto();
-      photo = UnsplashPhoto.fromMap(element);
-      newPhotos.add(photo);
-    }); 
+    if (response.body.isNotEmpty) {
+      List<dynamic> jsonData = jsonDecode(response.body);
+      jsonData.forEach((element) {
+        UnsplashPhoto photo = new UnsplashPhoto();
+        photo = UnsplashPhoto.fromMap(element);
+        newPhotos.add(photo);
+      }); 
 
-    setState(() { trendingPhotos = newPhotos; });
+      setState(() { trendingPhotos = newPhotos; });
+    }
   }
 
   getSearchedPhotos(String input) async {
