@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:unsplash_mobile/screens/home.dart';
 import 'package:unsplash_mobile/screens/search.dart';
 import 'package:unsplash_mobile/screens/upload.dart';
-import 'package:unsplash_mobile/screens/profile.dart';
+import 'package:unsplash_mobile/screens/my_profile.dart';
 
 class BottomBar extends StatelessWidget {
   final int selectedIndex;
@@ -38,7 +38,7 @@ class BottomBar extends StatelessWidget {
           Navigator.pop(context);
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Profile()),
+            MaterialPageRoute(builder: (context) => MyProfile()),
           );
           break;
       }
