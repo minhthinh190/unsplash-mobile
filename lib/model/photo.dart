@@ -16,15 +16,19 @@ class UnsplashPhoto {
 class User {
   final String id;
   final String name;
+  final String username;
   final String profileImage;
+  final int totalPhotos;
 
-  User({this.id, this.name, this.profileImage});
+  User({this.id, this.name, this.username, this.profileImage, this.totalPhotos});
 
   factory User.fromMap(Map<String, dynamic> jsonData) {
     return User(
       id: jsonData['id'],
       name: jsonData['name'],
+      username: jsonData['username'],
       profileImage: jsonData['profile_image']['medium'],
+      totalPhotos: jsonData['total_photos'],
     );
   }
 }
