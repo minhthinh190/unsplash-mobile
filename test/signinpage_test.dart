@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:unsplash_mobile/screens/signin.dart';
+import 'package:unsplash_mobile/screens/sub_screen/signin.dart';
 
 void main() {
   // Test case 1
