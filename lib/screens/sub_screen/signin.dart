@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 import 'package:unsplash_mobile/screens/sub_screen/signup.dart';
 import 'package:unsplash_mobile/screens/home.dart';
@@ -224,7 +225,7 @@ class _SignInFormState extends State<_SignInForm> {
 
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
-                    await _signInWithEmailAndPassword();
+                    await _logInWithEmailAndPassword();
                   }
                 }, 
               ),
@@ -242,25 +243,36 @@ class _SignInFormState extends State<_SignInForm> {
     _passwordController.dispose();
   }
 
-  Future<void> _signInWithEmailAndPassword() async {
+  Future<void> _logInWithEmailAndPassword() async {
     try {
-      final User user = (await _auth.signInWithEmailAndPassword(
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text,
-      ))
-        .user;
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${user.email} signed in')),
       );
 
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('${userCredential.user.email} logged in.')),
+      );
       Navigator.pushReplacement(context, MaterialPageRoute(
         builder: (context) => Home(),
       ));
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to sign in with Email & Password' + e.toString())),
-      );
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case 'user-not-found':
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('No user found for that email!')),
+          );
+          break;
+        case 'wrong-password':
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Wrong password!')),
+          );
+          break;
+        default: 
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('An undefined error happened!')),
+          );
+      }
     }
   }
 }
