@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:unsplash_mobile/model/photo.dart';
 import 'package:unsplash_mobile/data/api.dart';
 
-import 'package:unsplash_mobile/screens/selected_image.dart';
+import 'package:unsplash_mobile/screens/sub_screen/selected_image.dart';
 
 class RecommendedImages extends StatefulWidget {
   @override 
