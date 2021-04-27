@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unsplash_mobile/model/photo.dart';
 
-import 'package:unsplash_mobile/screens/selected_image.dart';
+import 'package:unsplash_mobile/screens/sub_screen/selected_image.dart';
 
 Widget trendingImages({List<UnsplashPhoto> photos, context}) {
   return Container(
