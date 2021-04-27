@@ -12,7 +12,7 @@ import 'package:unsplash_mobile/widgets/search/recommended_images.dart';
 
 import 'package:unsplash_mobile/data/api.dart';
 import 'package:unsplash_mobile/model/photo.dart';
-import 'package:unsplash_mobile/screens/search_result.dart';
+import 'package:unsplash_mobile/screens/sub_screen/search_result.dart';
 
 class Search extends StatefulWidget {
   final String searchQuery;
@@ -100,61 +100,65 @@ class _SearchState extends State<Search> {
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+
       appBar: MyAppBar(),
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SearchField(controller: searchController, callback: getSearchedPhotos),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(left: 30),
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      'Trending searches',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    )
-                  ),
-                  trendingImages(photos: trendingPhotos),
-                ],
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              SearchField(controller: searchController, callback: getSearchedPhotos),
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 30),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Trending searches',
+                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      )
+                    ),
+                    trendingImages(photos: trendingPhotos),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 35),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(left: 30),
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      'Trending topics',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    )
-                  ),
-                  trendingTopics(items: ['Dress', 'Architecture', 'Bunny', 'Photoshop'], callback: getSearchedPhotos),
-                ],
+              Container(
+                margin: EdgeInsets.only(top: 35),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 30),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Trending topics',
+                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      )
+                    ),
+                    trendingTopics(items: ['Interiors', 'Patterns', 'Textures', 'History'], callback: getSearchedPhotos),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              child: Column(  
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(left: 30),
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      'Recommended for you',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    )
-                  ),
-                  RecommendedImages(),
-                ],
+              Container(
+                margin: EdgeInsets.only(top: 15),
+                child: Column(  
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 30),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Recommended for you',
+                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      )
+                    ),
+                    RecommendedImages(),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        )
       ),
       bottomNavigationBar: BottomBar(selectedIndex: 1),
     );
