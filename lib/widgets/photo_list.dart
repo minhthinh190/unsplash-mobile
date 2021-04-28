@@ -25,7 +25,6 @@ Widget photoList({List<UnsplashPhoto> photos, context}) {
               ))
             );
           },
-
           child: GridTile(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
