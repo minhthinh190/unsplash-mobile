@@ -23,8 +23,8 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  List<UnsplashPhoto> photos = new List();
-  List<UnsplashPhoto> trendingPhotos = new List();
+  List<UnsplashPhoto> photos = <UnsplashPhoto>[];
+  List<UnsplashPhoto> trendingPhotos = <UnsplashPhoto>[];
 
   TextEditingController searchController = new TextEditingController();
 
@@ -41,7 +41,7 @@ class _SearchState extends State<Search> {
       url,
       headers: {'Authorization': unsplashApiKey},
     );
-    List<UnsplashPhoto> newPhotos = new List();
+    List<UnsplashPhoto> newPhotos = <UnsplashPhoto>[];
 
     if (response.body.isNotEmpty) {
       List<dynamic> jsonData = jsonDecode(response.body);
@@ -69,7 +69,7 @@ class _SearchState extends State<Search> {
       headers: {'Authorization': unsplashApiKey},
     );
     photos.clear();
-    List<UnsplashPhoto> newPhotos = new List();
+    List<UnsplashPhoto> newPhotos = <UnsplashPhoto>[];
 
     Map<String, dynamic> jsonData = jsonDecode(response.body);
     jsonData['results'].forEach((element) {
