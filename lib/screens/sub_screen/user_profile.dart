@@ -17,7 +17,7 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  List<UnsplashPhoto> photos = new List();
+  List<UnsplashPhoto> photos = <UnsplashPhoto>[];
 
   getUserPhotos() async {
     Map<String, String> queryParams = {
