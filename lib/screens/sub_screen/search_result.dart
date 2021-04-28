@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:unsplash_mobile/model/photo.dart';
-import 'package:unsplash_mobile/widgets/appbar.dart';
 import 'package:unsplash_mobile/widgets/photo_list.dart';
 
 class SearchResult extends StatelessWidget {
