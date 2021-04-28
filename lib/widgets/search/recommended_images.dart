@@ -15,7 +15,7 @@ class RecommendedImages extends StatefulWidget {
 }
 
 class _RecommendedImagesState extends State<RecommendedImages> {
-  List<UnsplashPhoto> photos = new List();
+  List<UnsplashPhoto> photos = <UnsplashPhoto>[];
 
 
   getRecommendedPhotos() async {

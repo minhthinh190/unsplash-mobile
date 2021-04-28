@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 import 'package:unsplash_mobile/model/photo.dart';
 import 'package:unsplash_mobile/screens/sub_screen/user_profile.dart';
