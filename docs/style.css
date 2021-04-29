@@ -1,0 +1,55 @@
+* {
+	font-family: sans-serif;
+	color: #323232;
+	box-sizing: border-box;
+}
+.brand-section {
+	font-family: sans-serif;
+	padding: 200px 0;
+	color: #323232;
+	text-align: center;
+}
+.brand {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+h1 { margin: 0; font-size: 50px; }
+h3 { margin: 0; }
+.brand-des {}
+.btn-download {
+	margin-top: 70px;
+	border: none;
+	border-radius: 5px;
+	padding: 12px 20px;
+	background: #323232;
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.btn-download:hover {
+	cursor: pointer;
+	background: black;
+}
+.app-details {
+	display: flex;
+	justify-content: center;
+}
+.screen-description {
+	width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #323232;
+	padding: 100px;
+}
+.screenshot {
+	width: 50%;
+	text-align: center;
+	background: black;
+	padding: 50px 0;
+}
+.screen-img {
+	border-radius: 10px;
+	margin: 10px;
+}
