@@ -27,6 +27,7 @@ class BottomBar extends StatelessWidget {
             MaterialPageRoute(builder: (context) => Search()),
           );
           break;
+        /*
         case 2:
           Navigator.pop(context);
           Navigator.push(
@@ -34,7 +35,8 @@ class BottomBar extends StatelessWidget {
             MaterialPageRoute(builder: (context) => Upload()),
           );
           break;
-        case 3:
+        */
+        case 2:
           Navigator.pop(context);
           Navigator.push(
             context,
@@ -61,11 +63,11 @@ class BottomBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.search_rounded),
           label: 'Search',
-        ),
+        ),/*
         BottomNavigationBarItem(
           icon: Icon(Icons.upload_sharp),
           label: 'Upload',
-        ),
+        ),*/
         BottomNavigationBarItem(
           icon: Icon(Icons.person_rounded),
           label: 'Profile',
