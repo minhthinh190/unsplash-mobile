@@ -78,6 +78,23 @@ class _MyProfileState extends State<MyProfile> {
                       ],
                     ),
                     SizedBox(height: 30),
+                    Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Location: ',
+                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xff323232)),
+                            ),
+                            Text(
+                              '${data['location']}',
+                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xffbababa)),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                     myPhotos(context: context),
                   ],
                 ),
@@ -92,7 +109,7 @@ class _MyProfileState extends State<MyProfile> {
           );
         }
       ),
-      bottomNavigationBar: BottomBar(selectedIndex: 3),
+      bottomNavigationBar: BottomBar(selectedIndex: 2),
     );
   }
 }
