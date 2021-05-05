@@ -31,11 +31,11 @@ class _SignInPageState extends State<SignInPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Welcome,',
+                      'Welcome!',
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                     ),
                     Text(
-                      'Login to continue!',
+                      'Login to continue.',
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Color(0xffbababa)),
                     ),
                   ]

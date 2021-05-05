@@ -91,6 +91,7 @@ class _SignUpFormState extends State<_SignUpForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _firstnameController = TextEditingController();
   final TextEditingController _lastnameController = TextEditingController();
+  final TextEditingController _locationController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmController = TextEditingController();
 
@@ -109,7 +110,7 @@ class _SignUpFormState extends State<_SignUpForm> {
     });
   }
 
-  Future<void> _createAccount(String email, String firstname, String lastname, String password) async {
+  Future<void> _createAccount(String email, String firstname, String lastname, String location, String password) async {
     try {
       // create account in Firebase Authentication
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
@@ -124,6 +125,7 @@ class _SignUpFormState extends State<_SignUpForm> {
         'first name': firstname,
         'last name': lastname,
         'name': firstname + ' ' + lastname,
+        'location': location,
         'total_photos': 0,
         'profile_image': 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png',
       })
@@ -280,6 +282,37 @@ class _SignUpFormState extends State<_SignUpForm> {
                 ),
               ),
             ),
+            SizedBox(height: 30),
+            // Location input field
+            Container(
+              margin: EdgeInsets.only(bottom: 6),
+              child: Text(
+                'Location',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xff323232)),
+              )
+            ),
+            TextFormField(
+              controller: _locationController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return 'Please enter your location!';
+                }
+                return null;
+              },
+
+              style: TextStyle(fontSize: 20),
+              decoration: InputDecoration(
+                isDense: true,
+                contentPadding: EdgeInsets.all(10),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  borderSide: BorderSide(color: Color(0xff323232)),
+                ),
+              ),
+            ),
             SizedBox(height: 70),
             // Password input field
             Container(
@@ -396,6 +429,7 @@ class _SignUpFormState extends State<_SignUpForm> {
                       _emailController.text.trim(),
                       _firstnameController.text,
                       _lastnameController.text,
+                      _locationController.text,
                       _passwordController.text,
                     );
                     await _logInWithEmailAndPassword();
