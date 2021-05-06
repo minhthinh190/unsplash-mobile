@@ -17,39 +17,36 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 40),
 
-          child: Stack(
-            children: <Widget>[
-              Positioned(
-                top: 80,
-                left: 40,
-
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Welcome!',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-                    ),
-                    Text(
-                      'Login to continue.',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Color(0xffbababa)),
-                    ),
-                  ]
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(top: 70, bottom: 50),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/images/unsplash_logo.png', 
+                        height: 36,
+                      ),
+                      Text(
+                        '  Login',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+                      ),
+                    ],
+                  )
                 ),
-              ),
-              _SignInForm(),
-              Positioned(
-                bottom: 10,
-                left: 105,
-
-                child: Container(
+                _SignInForm(),
+                Container(
+                  padding: EdgeInsets.only(bottom: 10, top: 254),
                   alignment: Alignment.center,
 
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
                     children: <Widget>[
                       Text(
                         "Don't have an account? ",
@@ -61,7 +58,6 @@ class _SignInPageState extends State<SignInPage> {
                             builder: (context) => SignUpPage(),
                           ));
                         },
-
                         child: Text(
                           'Join',
                           style: TextStyle(
@@ -72,13 +68,13 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                         )
                       )
-                    ]
-                  )
+                    ],
+                  ),
                 ),
-              )
-            ]
-          )
-        )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -107,15 +103,13 @@ class _SignInFormState extends State<_SignInForm> {
     return Form(
       key: _formKey,
 
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 40),
-
+      child: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: <Widget>[
-            SizedBox(height: 40),
+            SizedBox(height: 60),
             Container(
               margin: EdgeInsets.only(bottom: 6),
               child: Text(
@@ -208,12 +202,12 @@ class _SignInFormState extends State<_SignInForm> {
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
                   backgroundColor: MaterialStateProperty.all<Color>(Color(0xff323232)),
                   padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                    EdgeInsets.symmetric(horizontal: 130, vertical: 10),
+                    EdgeInsets.symmetric(horizontal: 140, vertical: 10),
                   ),
                 ),
                 child: Text(
@@ -260,17 +254,26 @@ class _SignInFormState extends State<_SignInForm> {
       switch (e.code) {
         case 'user-not-found':
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('No user found for that email!')),
+            SnackBar(
+              content: Text('No user found for that email!'),
+              backgroundColor: Colors.redAccent,  
+            ),
           );
           break;
         case 'wrong-password':
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Wrong password!')),
+            SnackBar(
+              content: Text('Wrong password!'),
+              backgroundColor: Colors.redAccent,
+            ),
           );
           break;
         default: 
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('An undefined error happened!')),
+            SnackBar(
+              content: Text('An undefined error happened!'),
+              backgroundColor: Colors.redAccent,
+            ),
           );
       }
     }
