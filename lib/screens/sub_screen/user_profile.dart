@@ -22,7 +22,7 @@ class _UserProfileState extends State<UserProfile> {
   getUserPhotos() async {
     Map<String, String> queryParams = {
       'page': '1',
-      'per_page': '20',
+      'per_page': '21',
       'order_by': 'latest',
     };
     String query = Uri(queryParameters: queryParams).query;
