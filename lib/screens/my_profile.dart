@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:unsplash_mobile/screens/sub_screen/signin.dart';
 
-import 'package:unsplash_mobile/widgets/my_profile/my_photos.dart';
 import 'package:unsplash_mobile/widgets/appbar.dart';
 import 'package:unsplash_mobile/widgets/bottom_bar.dart';
 
@@ -78,24 +77,25 @@ class _MyProfileState extends State<MyProfile> {
                       ],
                     ),
                     SizedBox(height: 30),
-                    Column(
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              'Location: ',
-                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xff323232)),
-                            ),
-                            Text(
-                              '${data['location']}',
-                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xffbababa)),
-                            ),
-                          ],
-                        ),
-                      ],
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Text(
+                                'Location:  ',
+                                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xff323232)),
+                              ),
+                              Text(
+                                '${data['location']}',
+                                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xffbababa)),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
                     ),
-                    myPhotos(context: context),
                   ],
                 ),
               ),
