@@ -23,11 +23,12 @@ class _SignUpPageState extends State<SignUpPage> {
 
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.only(top: 70, bottom: 50),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
                     children: <Widget>[
                       Image.asset(
                         'assets/images/unsplash_logo.png', 
@@ -411,12 +412,12 @@ class _SignUpFormState extends State<_SignUpForm> {
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
                   backgroundColor: MaterialStateProperty.all<Color>(Color(0xff323232)),
                   padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                    EdgeInsets.symmetric(horizontal: 130, vertical: 10),
+                    EdgeInsets.symmetric(horizontal: 146, vertical: 10),
                   ),
                 ),
                 child: Text(
