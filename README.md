@@ -25,8 +25,11 @@ Nhóm 10:
 ## Screenshots
 <div>
   <img src='assets/screenshots/home.png' width = 244>
-  <img src='assets/screenshots/search.png' width = 244>
+  <img src='assets/screenshots/home_explore.png' width = 244>
+  <img src='assets/screenshots/search.png' width = 244> <br/>
+  <img src='assets/screenshots/search_result.png' width = 244>
   <img src='assets/screenshots/selected_image.png' width = 244>
+  <img src='assets/screenshots/user_profile.png' width = 244>
 </div>
 
 ## Kết quả kiểm thử
