@@ -22,7 +22,12 @@ Nhóm 10:
 - [Dart](https://dart.dev/overview)
 - [Flutter](https://flutter.dev/)
 
-## Mô tả ứng dụng
+## Screenshots
+<div>
+  <img src='assets/screenshots/home.png' width = 244>
+  <img src='assets/screenshots/search.png' width = 244>
+  <img src='assets/screenshots/selected_image.png' width = 244>
+</div>
 
 ## Kết quả kiểm thử
 <div>
